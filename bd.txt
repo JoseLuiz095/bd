@@ -1,0 +1,90 @@
+1) Consulta com BETWEEN e EXTRACT:
+SELECT 
+  EMP.idEmprg,
+  EMP.nomEmprg,
+  EMP.numCPFEmprg,
+  DPD.nomDepend,
+  DPD.datNascDepend
+FROM Empregado EMP
+JOIN Dependente DPD ON EMP.idEmprg = DPD.idEmprg
+WHERE DPD.indSexoDepend = 'M'
+  AND EXTRACT(YEAR FROM EMP.datAdmsEmprg) BETWEEN 2012 AND 2020;
+
+2) Consulta com cláusula LIKE, filtro de horas e ordenação crescente:
+
+
+
+
+
+SELECT
+  e.idEmprg,
+  e.nomEmprg,
+  p.dscProj,
+  ep.qtdHorasEmprProj
+FROM Empregado e
+JOIN EmprProjeto ep ON e.idEmprg = ep.idEmprg
+JOIN Projeto p ON ep.idProj = p.idProj
+JOIN Localizacao l ON p.idLocal = l.idLocal
+WHERE (
+    l.dscLocal LIKE '%Espírito Santo%' OR
+    l.dscLocal LIKE '%Piauí%' OR
+    l.dscLocal LIKE '%São Paulo%'
+  )
+  AND ep.qtdHorasEmprProj BETWEEN 30 AND 80
+ORDER BY ep.qtdHorasEmprProj ASC;
+
+
+
+
+
+
+3) Consulta com GROUP BY, COUNT(*) e HAVING:
+
+
+SELECT
+  EMP.IdEmprg,
+  EMP.nomEmprg,
+  EMP.valSalEmprg,
+  COUNT(DPD.IdDepend) AS qtdDependente
+FROM Empregado EMP
+JOIN Dependente DPD ON EMP.IdEmprg = DPD.IdEmprg
+GROUP BY EMP.IdEmprg, EMP.nomEmprg, EMP.valSalEmprg
+HAVING COUNT(DPD.IdDepend) > 1;
+
+4) Consulta com NOT EXISTS:
+
+
+
+
+SELECT *
+FROM Empregado EMP
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM Dependente DPD
+  WHERE DPD.idEmprg = EMP.idEmprg
+);
+
+
+
+ 5) Consulta com REGEXP para nomes com sílabas "na", "ne" ou "no":
+
+
+SELECT
+  IdEmprg,
+  nomEmprg,
+  datAdmsEmprg
+FROM Empregado
+WHERE nomEmprg REGEXP 'na|ne|no';
+
+6) Consulta com autorrelacionamento (supervisores em departamentos específicos):
+
+
+
+SELECT DISTINCT
+  S.IdEmprg AS Matricula_Supervisor,
+  S.nomEmprg AS Nome_Supervisor
+FROM Empregado E
+JOIN Empregado S ON E.IdSupervisor = S.IdEmprg
+JOIN Departamento D ON S.IdDepto = D.IdDepto
+WHERE D.nomDepto IN ('Contabilidade', 'Custos');
+
