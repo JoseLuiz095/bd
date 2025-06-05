@@ -1,4 +1,7 @@
-1) Consulta com BETWEEN e EXTRACT:
+1) Listar a matrícula, o nome e CPF do empregado e o nome e a data de
+nascimento dos dependentes desses empregados, para os empregados que tiveram
+data de admissão entre 2012 e 2020 e dependentes do sexo masculino (utilizar
+between e cláusula extract):
 SELECT 
   EMP.idEmprg,
   EMP.nomEmprg,
@@ -10,7 +13,10 @@ JOIN Dependente DPD ON EMP.idEmprg = DPD.idEmprg
 WHERE DPD.indSexoDepend = 'M'
   AND EXTRACT(YEAR FROM EMP.datAdmsEmprg) BETWEEN 2012 AND 2020;
 
-2) Consulta com cláusula LIKE, filtro de horas e ordenação crescente:
+2) Listar a matrícula e nomes dos empregados, o nome e a quantidade de horas dos
+projetos cuja localização seja no Espírito Santo, Piauí ou São Paulo e que tenha
+entre 30 e 80 horas de projeto. Ordenar em ordem crescente de horas de projeto.
+Utilizar cláusula like para a localização:
 
 
 
@@ -38,7 +44,9 @@ ORDER BY ep.qtdHorasEmprProj ASC;
 
 
 
-3) Consulta com GROUP BY, COUNT(*) e HAVING:
+3) Listar a quantidade de dependentes por empregado, mostrando o id, nome e
+salário, para os empregados que tem mais de um dependente. Utilizar group by,
+having e função agregada count(*):
 
 
 SELECT
@@ -51,7 +59,8 @@ JOIN Dependente DPD ON EMP.IdEmprg = DPD.IdEmprg
 GROUP BY EMP.IdEmprg, EMP.nomEmprg, EMP.valSalEmprg
 HAVING COUNT(DPD.IdDepend) > 1;
 
-4) Consulta com NOT EXISTS:
+4) Listar os empregados que não tem nenhum dependente (utilizar cláusula
+exists/not exists):
 
 
 
@@ -66,7 +75,8 @@ WHERE NOT EXISTS (
 
 
 
- 5) Consulta com REGEXP para nomes com sílabas "na", "ne" ou "no":
+ 5) Listar os empregados (id, nome e data de admissão) cujos nomes tem as sílabas
+na, ne ou no (utilizar expressão regular):
 
 
 SELECT
@@ -76,7 +86,8 @@ SELECT
 FROM Empregado
 WHERE nomEmprg REGEXP 'na|ne|no';
 
-6) Consulta com autorrelacionamento (supervisores em departamentos específicos):
+6) Fazer uma consulta para mostrar o id e nome dos supervisores que trabalham no
+departamento de Contabilidade ou Custos (autorelacionamento):
 
 
 
