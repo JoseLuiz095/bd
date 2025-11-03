@@ -1,101 +1,39 @@
-1) Listar a matrícula, o nome e CPF do empregado e o nome e a data de
-nascimento dos dependentes desses empregados, para os empregados que tiveram
-data de admissão entre 2012 e 2020 e dependentes do sexo masculino (utilizar
-between e cláusula extract):
-SELECT 
-  EMP.idEmprg,
-  EMP.nomEmprg,
-  EMP.numCPFEmprg,
-  DPD.nomDepend,
-  DPD.datNascDepend
-FROM Empregado EMP
-JOIN Dependente DPD ON EMP.idEmprg = DPD.idEmprg
-WHERE DPD.indSexoDepend = 'M'
-  AND EXTRACT(YEAR FROM EMP.datAdmsEmprg) BETWEEN 2012 AND 2020;
+1. (e) Inicializar a comunicação entre o aplicativo e os serviços do Firebase
 
-2) Listar a matrícula e nomes dos empregados, o nome e a quantidade de horas dos
-projetos cuja localização seja no Espírito Santo, Piauí ou São Paulo e que tenha
-entre 30 e 80 horas de projeto. Ordenar em ordem crescente de horas de projeto.
-Utilizar cláusula like para a localização:
+2. (d) Usando o método authStateChanges para observar o estado da autenticação
 
+3. (e) Ele armazena dados em coleções e documentos em vez de tabelas e linhas
 
+4. (b) Definir quem pode ler e gravar dados, garantindo a segurança e a privacidade das informações
 
+5. (d) Porque permite abrir uma nova tela empilhando-a sobre a atual
 
+6. (d) Atualizar automaticamente a interface quando há mudanças nos dados do banco em tempo real
 
-SELECT
-  e.idEmprg,
-  e.nomEmprg,
-  p.dscProj,
-  ep.qtdHorasEmprProj
-FROM Empregado e
-JOIN EmprProjeto ep ON e.idEmprg = ep.idEmprg
-JOIN Projeto p ON ep.idProj = p.idProj
-JOIN Localizacao l ON p.idLocal = l.idLocal
-WHERE (
-    l.dscLocal LIKE '%Espírito Santo%' OR
-    l.dscLocal LIKE '%Piauí%' OR
-    l.dscLocal LIKE '%São Paulo%'
-  )
-  AND ep.qtdHorasEmprProj BETWEEN 30 AND 80
-ORDER BY ep.qtdHorasEmprProj ASC;
+7. (a) Porque protege os dados do usuário e restringe o acesso apenas a pessoas autorizadas
 
+8. (e) Permitir a integração entre autenticação, banco de dados e interface de forma unificada e multiplataforma
 
+9. (e) Fecha a tela atual e retorna para a anterior na pilha de navegação
 
+10. (a) Gerenciar a navegação entre telas rotas dentro do aplicativo
 
+11. (c) Um banco de dados NoSQL em nuvem que armazena dados em coleções e documentos
 
+12. (d) Porque fornece formas seguras e simples de autenticar usuários no aplicativo
 
-3) Listar a quantidade de dependentes por empregado, mostrando o id, nome e
-salário, para os empregados que tem mais de um dependente. Utilizar group by,
-having e função agregada count(*):
+13. (d) Uma plataforma online que permite gerenciar projetos, bancos de dados e autenticação do Firebase
 
+14. (d) O comando delete, aplicado ao documento que se deseja remover
 
-SELECT
-  EMP.IdEmprg,
-  EMP.nomEmprg,
-  EMP.valSalEmprg,
-  COUNT(DPD.IdDepend) AS qtdDependente
-FROM Empregado EMP
-JOIN Dependente DPD ON EMP.IdEmprg = DPD.IdEmprg
-GROUP BY EMP.IdEmprg, EMP.nomEmprg, EMP.valSalEmprg
-HAVING COUNT(DPD.IdDepend) > 1;
+15. (a) Firebase Authentication
 
-4) Listar os empregados que não tem nenhum dependente (utilizar cláusula
-exists/not exists):
+16. (b) Um registro de dados que contém pares de chave e valor dentro de uma coleção
 
+17. (e) Por meio de fluxos de dados streams que enviam notificações quando há mudanças
 
+18. (a) Gerenciar o login, registro e controle de usuários de forma segura
 
+19. (b) Sincronização automática entre dispositivos e acesso em tempo real pela nuvem
 
-SELECT *
-FROM Empregado EMP
-WHERE NOT EXISTS (
-  SELECT 1
-  FROM Dependente DPD
-  WHERE DPD.idEmprg = EMP.idEmprg
-);
-
-
-
- 5) Listar os empregados (id, nome e data de admissão) cujos nomes tem as sílabas
-na, ne ou no (utilizar expressão regular):
-
-
-SELECT
-  IdEmprg,
-  nomEmprg,
-  datAdmsEmprg
-FROM Empregado
-WHERE nomEmprg REGEXP 'na|ne|no';
-
-6) Fazer uma consulta para mostrar o id e nome dos supervisores que trabalham no
-departamento de Contabilidade ou Custos (autorelacionamento):
-
-
-
-SELECT DISTINCT
-  S.IdEmprg AS Matricula_Supervisor,
-  S.nomEmprg AS Nome_Supervisor
-FROM Empregado E
-JOIN Empregado S ON E.IdSupervisor = S.IdEmprg
-JOIN Departamento D ON S.IdDepto = D.IdDepto
-WHERE D.nomDepto IN ('Contabilidade', 'Custos');
-
+20. (e) Um agrupamento de documentos que armazenam dados relacionados entre si
