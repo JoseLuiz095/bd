@@ -1,0 +1,7 @@
+1QDE
+Ao final de um Sprint, o time deve ter entregue um incremento funcionando, ou seja, uma parte do produto realmente pronta para uso ou avaliação. Todas as tarefas planejadas para o Sprint precisam estar concluídas dentro dos critérios de “Pronto”, sem pendências. As reuniões de acompanhamento (Daily) devem ter acontecido para manter o alinhamento, e, no fim, a Sprint Review deve apresentar o que foi feito ao Product Owner e demais envolvidos. Depois disso, a Retrospectiva deve registrar o que funcionou bem, o que precisa melhorar e quais ajustes o time vai aplicar no próximo Sprint. Assim, o ciclo se encerra com entrega real, transparência e evolução contínua do processo.
+
+2 QDE
+Ao final do primeiro Sprint, o grupo deve ter definido a visão geral do livro (público, gênero e tom) e ter alinhado isso entre todos. Também é necessário decidir os papéis no Scrum, escolhendo quem será o Product Owner e o Scrum Master, além de deixar claro o que cada um vai fazer.
+
+No GitHub, o repositório já deve estar criado e organizado, com todos sabendo usar commit e push para evitar conflitos. Na parte criativa, o protagonista deve estar definido com suas principais características e objetivos, e também deve estar decidido o evento inicial que dá início à história. Por fim, o Sprint deve entregar um rascunho inicial do começo do livro, como o prólogo ou primeira cena, servindo como base para as próximas etapas.
