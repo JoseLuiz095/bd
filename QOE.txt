@@ -1,0 +1,13 @@
+1. (F) Times Kanban podem sim realizar reuniões como daily, revisão e retrospectiva; elas não são proibidas.
+
+2. (F) Kanban é um sistema pull (puxado), não push.
+
+3. (F) Não se recomenda que o Product Owner acumule a função de Scrum Master, mesmo em times pequenos.
+
+4. (V) Pela Lei de Little, se conhecemos lead time e throughput, podemos calcular o limite de WIP.
+
+5. (F) Limites de WIP se aplicam apenas ao trabalho em progresso, não ao backlog.
+
+6. (V) O modelo iterativo e incremental permite revisões e melhorias a cada ciclo.
+
+7. (V) Na integração contínua, o código é integrado ao repositório com alta frequência, idealmente várias vezes ao dia.
